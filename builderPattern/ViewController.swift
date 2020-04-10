@@ -14,14 +14,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var view2: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let avatar = AvatarBuilder(view: viewImage,imageAvatar: image)
-//        viewImage = avatar.circularView().border().circularImageView(url: "image1").build()
-//        viewImage = avatar.shadow().build()
-        viewImage = avatar.image(url: "starbucks").circularView().border(borderWidth: 3, borderColor: UIColor.red.cgColor).shadow().build()
-        
+        let avatar = AvatarBuilder(view: view2,imageAvatar: image)
+        viewImage = avatar.circularView().circularImage(url: "starbucks").scaleToSize().border(borderWidth: 2, borderColor: UIColor.gray.cgColor).shadow(opacity: 0.3, color:UIColor.black.cgColor).build()
+        view2.layer.cornerRadius = 5
+        view2.layer.opacity = 1
+        view2 = avatar.shadow(opacity: 0.2, color: UIColor.black.cgColor).build()
     }
 
 

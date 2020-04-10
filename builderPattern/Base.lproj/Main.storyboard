@@ -19,29 +19,38 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qv1-LY-8UG">
-                                        <rect key="frame" x="107" y="86" width="200" height="200"/>
+                                        <rect key="frame" x="182" y="88" width="50" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-d9-cwp">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="CXq-HR-bih"/>
-                                                    <constraint firstAttribute="height" constant="200" id="vdB-f1-dqt"/>
+                                                    <constraint firstAttribute="width" constant="50" id="CXq-HR-bih"/>
+                                                    <constraint firstAttribute="height" constant="50" id="vdB-f1-dqt"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="dAC-d9-cwp" firstAttribute="centerY" secondItem="Qv1-LY-8UG" secondAttribute="centerY" id="9U0-kg-NMw"/>
-                                            <constraint firstAttribute="width" constant="200" id="hUe-kx-88V"/>
+                                            <constraint firstAttribute="width" constant="50" id="hUe-kx-88V"/>
                                             <constraint firstItem="dAC-d9-cwp" firstAttribute="centerX" secondItem="Qv1-LY-8UG" secondAttribute="centerX" id="nzd-Xv-nob"/>
-                                            <constraint firstAttribute="height" constant="200" id="uBJ-lG-7MX"/>
+                                            <constraint firstAttribute="height" constant="50" id="uBJ-lG-7MX"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCJ-i4-FSn">
+                                        <rect key="frame" x="87" y="338" width="240" height="427"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="427" id="0CE-iK-pfn"/>
+                                            <constraint firstAttribute="width" constant="240" id="zaT-yF-Y4g"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Qv1-LY-8UG" firstAttribute="top" secondItem="ffb-2Z-yV9" secondAttribute="top" constant="86" id="J5o-jB-03J"/>
+                                    <constraint firstItem="Qv1-LY-8UG" firstAttribute="top" secondItem="ffb-2Z-yV9" secondAttribute="top" constant="88" id="J5o-jB-03J"/>
                                     <constraint firstItem="Qv1-LY-8UG" firstAttribute="centerX" secondItem="ffb-2Z-yV9" secondAttribute="centerX" id="b9O-Ff-Ver"/>
+                                    <constraint firstAttribute="bottom" secondItem="gCJ-i4-FSn" secondAttribute="bottom" constant="53" id="jgc-s9-KFd"/>
+                                    <constraint firstItem="gCJ-i4-FSn" firstAttribute="centerX" secondItem="ffb-2Z-yV9" secondAttribute="centerX" id="tkO-Gh-R3x"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -56,12 +65,13 @@
                     </view>
                     <connections>
                         <outlet property="image" destination="dAC-d9-cwp" id="V5g-Lx-lRV"/>
+                        <outlet property="view2" destination="gCJ-i4-FSn" id="QTF-iJ-e2q"/>
                         <outlet property="viewImage" destination="Qv1-LY-8UG" id="oQ8-m8-wsm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

@@ -31,12 +31,12 @@ class AvatarBuilder : AvatarProtocol{
         return self
     }
     
-    func shadow() -> AvatarBuilder {
+    func shadow(opacity: Float = 0.1, color:CGColor = UIColor.black.cgColor) -> AvatarBuilder {
         self.view.layer.masksToBounds = false
-        self.view.layer.shadowColor = UIColor.black.cgColor
+        self.view.layer.shadowColor = color
         self.view.layer.shadowOffset = CGSize.zero
-        self.view.layer.shadowRadius = view.frame.width / 2
-        self.view.layer.shadowOpacity = 1
+        self.view.layer.shadowRadius = 5
+        self.view.layer.shadowOpacity = opacity
         self.view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
         self.view.layer.shouldRasterize = true
         self.view.layer.rasterizationScale = UIScreen.main.scale
@@ -44,7 +44,7 @@ class AvatarBuilder : AvatarProtocol{
     }
     func circularImage(url:String) -> AvatarBuilder {
         imageAvatar.image =  UIImage(named: url)
-        imageAvatar.bounds.size = self.view.bounds.size
+        imageAvatar.frame = self.view.frame
         self.imageAvatar.layer.cornerRadius = 0.5 * (imageAvatar.bounds.size.width)
         self.imageAvatar.clipsToBounds = true
         self.view.addSubview(imageAvatar)
@@ -66,19 +66,10 @@ class AvatarBuilder : AvatarProtocol{
         return self
     }
     
-    func zoomOut(url:String,size:CGFloat) -> AvatarBuilder {
-        imageAvatar.image = imageAvatar.image?.scaleToSize(aSize: CGSize(width: imageAvatar.frame.width / 2, height: imageAvatar.frame.height / 2))
+    func scaleToSize() -> AvatarBuilder {
+        imageAvatar.image = imageAvatar.image?.scaleToSize(aSize: CGSize(width: imageAvatar.frame.width , height: imageAvatar.frame.height ))
         self.view.addSubview(imageAvatar)
         return self
-    }
-    
-    func zoomIn() -> AvatarBuilder {
-        
-        return self
-    }
-    
-    func buildImageView() -> UIImageView {
-        return self.imageAvatar
     }
     
     func build() -> UIView {
