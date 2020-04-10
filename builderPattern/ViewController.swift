@@ -18,8 +18,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let avatar = AvatarBuilder(view: viewImage,imageAvatar: image)
-        // Do any additional setup after loading the view.
-        viewImage = avatar.circularView().border(borderWidth: 2.0, borderColor: UIColor.black.cgColor).image(url: "image1").build()
+//        viewImage = avatar.circularView().border().circularImageView(url: "image1").build()
+//        viewImage = avatar.shadow().build()
+        viewImage = avatar.image(url: "starbucks").circularView().border(borderWidth: 3, borderColor: UIColor.red.cgColor).shadow().build()
+        
     }
 
 

@@ -13,7 +13,7 @@ protocol AvatarProtocol {
     func border(borderWidth : CGFloat, borderColor : CGColor) -> AvatarBuilder
     func shadow() ->AvatarBuilder
     func image(url:String) ->AvatarBuilder
-    func zoomOut() ->AvatarBuilder
+    func zoomOut(url:String,size:CGFloat) ->AvatarBuilder
     func zoomIn() -> AvatarBuilder
-    func backgroundColorWhenIsTransparant(color:UIColor) ->AvatarBuilder
+    func backgroundColorWhenIsTransparant(url:String,color:UIColor) ->AvatarBuilder
 }
