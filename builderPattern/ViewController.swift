@@ -11,19 +11,10 @@ import UIKit
 class ViewController: UIViewController,UIScrollViewDelegate {
 
     @IBOutlet weak var viewImage: UIView!
-    
-    @IBOutlet weak var image: UIImageView!
-    
-    @IBOutlet weak var view2: UIView!
-    
-    @IBOutlet weak var sCView: UIScrollView!
-    @IBOutlet weak var viewZoomed: UIView!
-    @IBOutlet weak var imageZoomed: UIScrollView!
-    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let avatar = AvatarBuilder(view: viewImage)
-        viewImage = avatar.image(url: "close", scale: 0.1).build()
+        viewImage = avatar.border(borderWidth: 2.0,borderColor: UIColor.gray.cgColor).circularImage(url: "image1").build()
     }
 
 

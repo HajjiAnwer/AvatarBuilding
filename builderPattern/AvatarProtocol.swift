@@ -12,8 +12,7 @@ protocol AvatarProtocol {
     func circularView() -> AvatarBuilder
     func border(borderWidth : CGFloat, borderColor : CGColor) -> AvatarBuilder
     func shadow(opacity: Float, color:CGColor ) ->AvatarBuilder
-    func image(url:String,scale:CGFloat) ->AvatarBuilder
+    func scaleImage(url:String,scale:CGFloat) ->AvatarBuilder
     func backgroundColorWhenIsTransparant(url:String,color:UIColor) ->AvatarBuilder
     func downloadImageWithURL(url:String) ->UIImageView
-    func circularImage(url:String) ->AvatarBuilder
 }

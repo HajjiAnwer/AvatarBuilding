@@ -44,15 +44,6 @@ class AvatarBuilder : AvatarProtocol{
         return self
     }
     
-    func circularImage(url:String) -> AvatarBuilder {
-        var imageView = UIImageView()
-        url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
-        imageView.layer.cornerRadius = 0.5 * (imageView.bounds.size.width)
-        imageView.clipsToBounds = true
-        self.view.addSubview(imageView)
-        return self
-    }
-    
     func backgroundColorWhenIsTransparant(url:String,color: UIColor) -> AvatarBuilder {
         var imageView = UIImageView()
         url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
@@ -72,7 +63,7 @@ class AvatarBuilder : AvatarProtocol{
         return imageView
     }
     
-    func image(url:String , scale:CGFloat) -> AvatarBuilder {
+    func scaleImage(url:String , scale:CGFloat = 1.0) -> AvatarBuilder {
         var imageView = UIImageView()
         url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
         imageView.center = CGPoint(x:view.frame.width / 2, y: view.frame.height / 2)
