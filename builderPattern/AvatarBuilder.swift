@@ -13,12 +13,16 @@ import CoreGraphics
 class AvatarBuilder : AvatarProtocol{
     
     var view: UIView
-   
-    
+    var coef: CGFloat = 1
     init(view:UIView) {
         self.view = view
     }
     
+    func cornerRadius (radius: CGFloat) ->AvatarBuilder{
+        self.view.layer.cornerRadius = radius
+        self.view.alpha = 1
+        return self
+    }
     
     func circularView() -> AvatarBuilder {
         self.view.layer.cornerRadius = 0.5 * (view.bounds.size.width)
@@ -36,42 +40,50 @@ class AvatarBuilder : AvatarProtocol{
         self.view.layer.masksToBounds = false
         self.view.layer.shadowColor = color
         self.view.layer.shadowOffset = CGSize.zero
-        self.view.layer.shadowRadius = view.frame.width / 2
+        self.view.layer.shadowRadius = view.frame.width / 32
         self.view.layer.shadowOpacity = opacity
-        self.view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
         self.view.layer.shouldRasterize = true
         self.view.layer.rasterizationScale = UIScreen.main.scale
         return self
     }
     
     func backgroundColorWhenIsTransparant(url:String,color: UIColor) -> AvatarBuilder {
-        var imageView = UIImageView()
+        let scale:CGFloat = coef
+        var imageView = addImageViewToSuperView(scale: scale)
         url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
         if (imageView.image?.isTransparent() ?? false)  {
             imageView.image = (UIImage.init().changeBackgroundColor(image: imageView.image ?? UIImage(), backgroundColor: color))
+            self.view.backgroundColor = color
         }
+        
         self.view.addSubview(imageView)
         self.view.clipsToBounds = true
         return self
     }
     
-    func downloadImageWithURL(url: String) -> UIImageView {
+    func scaleImage(url:String , scale:CGFloat = 1.0) -> AvatarBuilder {
+        var imageView = addImageViewToSuperView(scale: scale)
+        url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
+        self.view.clipsToBounds = true
+        self.view.addSubview(imageView)
+        self.coef = scale
+        return self
+    }
+    
+    private func addImageViewToSuperView(scale : CGFloat = 1)->UIImageView{
+        let imageView = UIImageView()
+        imageView.bounds.size.width = view.frame.width * scale
+        imageView.bounds.size.height = view.frame.height * scale
+        imageView.center = CGPoint(x:view.frame.width / 2, y: view.frame.height / 2)
+        return imageView
+    }
+    
+    private func downloadImageWithURL(url: String) -> UIImageView {
         let imageView = UIImageView()
         if let url = URL.init(string: url) {
             imageView.downloadedFrom(url: url)
         }
         return imageView
-    }
-    
-    func scaleImage(url:String , scale:CGFloat = 1.0) -> AvatarBuilder {
-        var imageView = UIImageView()
-        url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
-        imageView.center = CGPoint(x:view.frame.width / 2, y: view.frame.height / 2)
-        imageView.bounds.size.width = view.frame.width * scale
-        imageView.bounds.size.height = view.frame.height * scale
-        self.view.clipsToBounds = true
-        self.view.addSubview(imageView)
-        return self
     }
     
     func build() -> UIView {

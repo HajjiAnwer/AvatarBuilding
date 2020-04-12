@@ -14,5 +14,5 @@ protocol AvatarProtocol {
     func shadow(opacity: Float, color:CGColor ) ->AvatarBuilder
     func scaleImage(url:String,scale:CGFloat) ->AvatarBuilder
     func backgroundColorWhenIsTransparant(url:String,color:UIColor) ->AvatarBuilder
-    func downloadImageWithURL(url:String) ->UIImageView
+    func cornerRadius (radius: CGFloat) ->AvatarBuilder
 }
