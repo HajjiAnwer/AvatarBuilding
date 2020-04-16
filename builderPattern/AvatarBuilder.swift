@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 import CoreGraphics
+import Kingfisher
 
 class AvatarBuilder : AvatarProtocol{
     
     var view: UIView
     var coef: CGFloat = 1
+    
     init(view:UIView) {
         self.view = view
     }
@@ -47,10 +49,11 @@ class AvatarBuilder : AvatarProtocol{
         return self
     }
     
-    func backgroundColorWhenIsTransparant(url:String,color: UIColor) -> AvatarBuilder {
+    func backgroundColorWhenIsTransparant(url:String,color: UIColor,type:Type) -> AvatarBuilder {
         let scale:CGFloat = coef
-        var imageView = addImageViewToSuperView(scale: scale)
-        url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
+        let imageView = addImageViewToSuperView(scale: scale,type: type)
+        let url = URL(string: url)
+        imageView.kf.setImage(with: url)
         if (imageView.image?.isTransparent() ?? false)  {
             imageView.image = (UIImage.init().changeBackgroundColor(image: imageView.image ?? UIImage(), backgroundColor: color))
             self.view.backgroundColor = color
@@ -61,25 +64,31 @@ class AvatarBuilder : AvatarProtocol{
         return self
     }
     
-    func scaleImage(url:String , scale:CGFloat = 1.0) -> AvatarBuilder {
-        var imageView = addImageViewToSuperView(scale: scale)
-        url.isValidURL ? (imageView = downloadImageWithURL(url: url)) : (imageView.image =  UIImage(named: url))
+    func scaleImage(url:String , scale:CGFloat = 1.0,type:Type) -> AvatarBuilder {
+        let imageView = addImageViewToSuperView(scale: scale,type: type)
+        let url = URL(string: url)
+        imageView.kf.setImage(with: url)
         self.view.clipsToBounds = true
         self.view.addSubview(imageView)
         self.coef = scale
         return self
     }
     
-    private func addImageViewToSuperView(scale : CGFloat = 1)->UIImageView{
+    private func addImageViewToSuperView(scale : CGFloat = 1,type:Type)->UIImageView{
         let imageView = UIImageView()
         imageView.bounds.size.width = view.frame.width * scale
         imageView.bounds.size.height = view.frame.height * scale
         imageView.center = CGPoint(x:view.frame.width / 2, y: view.frame.height / 2)
+        imageView.backgroundColor = UIColor.white
+        if type == .cercle{
+            imageView.layer.cornerRadius = 0.5 * (view.bounds.size.width)
+            imageView.clipsToBounds = true
+        }
         return imageView
     }
     
-    private func downloadImageWithURL(url: String) -> UIImageView {
-        let imageView = UIImageView()
+    private func downloadImageWithURL(url: String , scale : CGFloat = 1,type:Type) -> UIImageView {
+        let imageView = addImageViewToSuperView(scale: scale,type: type)
         if let url = URL.init(string: url) {
             imageView.downloadedFrom(url: url)
         }
@@ -89,7 +98,7 @@ class AvatarBuilder : AvatarProtocol{
     func build() -> UIView {
         return self.view
     }
-      
+     
 }
 
 

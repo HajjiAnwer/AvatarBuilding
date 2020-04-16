@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="builderPattern" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstController" id="BYZ-38-t0r" customClass="ViewController" customModule="builderPattern" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,12 +60,26 @@
                                             <constraint firstAttribute="height" constant="100" id="uBJ-lG-7MX"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJF-s0-VbD">
+                                        <rect key="frame" x="26" y="8" width="46" height="30"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="G3w-A0-FA4"/>
+                                            <constraint firstAttribute="width" constant="46" id="gKl-IW-Lcs"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="btnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q2u-e5-nE2"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Sjg-BC-JJq" firstAttribute="leading" secondItem="ffb-2Z-yV9" secondAttribute="leading" constant="26" id="BbE-qd-ZgX"/>
                                     <constraint firstItem="Qv1-LY-8UG" firstAttribute="top" secondItem="ffb-2Z-yV9" secondAttribute="top" constant="58" id="J5o-jB-03J"/>
+                                    <constraint firstItem="EJF-s0-VbD" firstAttribute="top" secondItem="ffb-2Z-yV9" secondAttribute="top" constant="8" id="MG0-k8-yhH"/>
                                     <constraint firstItem="Sjg-BC-JJq" firstAttribute="top" secondItem="Qv1-LY-8UG" secondAttribute="bottom" constant="38" id="Uem-UZ-m7F"/>
                                     <constraint firstItem="Qv1-LY-8UG" firstAttribute="centerX" secondItem="ffb-2Z-yV9" secondAttribute="centerX" id="b9O-Ff-Ver"/>
+                                    <constraint firstItem="EJF-s0-VbD" firstAttribute="leading" secondItem="ffb-2Z-yV9" secondAttribute="leading" constant="26" id="iuQ-Nv-dgS"/>
                                     <constraint firstAttribute="trailing" secondItem="Sjg-BC-JJq" secondAttribute="trailing" constant="31" id="wOg-k7-k1a"/>
                                 </constraints>
                             </view>
@@ -79,6 +93,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="G7D-3a-RvR"/>
                     <connections>
                         <outlet property="height" destination="f7E-nR-Fp4" id="meW-KQ-btr"/>
                         <outlet property="table" destination="Sjg-BC-JJq" id="kbV-rq-Yjz"/>
@@ -87,7 +102,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+            <point key="canvasLocation" x="237.68115942028987" y="133.92857142857142"/>
+        </scene>
+        <!--Next Controller View Controller-->
+        <scene sceneID="fj7-Nz-clW">
+            <objects>
+                <viewController storyboardIdentifier="nextView" id="fcp-Cf-bDf" customClass="NextControllerViewController" customModule="builderPattern" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0dZ-Zu-053">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbY-c2-6uA">
+                                <rect key="frame" x="151" y="138" width="128" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="0wz-JY-VMb"/>
+                                    <constraint firstAttribute="width" constant="128" id="rEh-Na-Ztl"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL4-dI-WSi">
+                                <rect key="frame" x="192" y="337" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="KIw-D0-d31"/>
+                                    <constraint firstAttribute="height" constant="30" id="sck-qW-XLi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="dismissbtn:" destination="fcp-Cf-bDf" eventType="touchUpInside" id="900-YU-MvU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w4H-q9-Gfn" firstAttribute="trailing" secondItem="xbY-c2-6uA" secondAttribute="trailing" constant="135" id="CdJ-bB-kwZ"/>
+                            <constraint firstItem="oL4-dI-WSi" firstAttribute="top" secondItem="xbY-c2-6uA" secondAttribute="bottom" constant="71" id="DXw-Ht-rC5"/>
+                            <constraint firstItem="w4H-q9-Gfn" firstAttribute="trailing" secondItem="oL4-dI-WSi" secondAttribute="trailing" constant="176" id="PcG-CS-IB0"/>
+                            <constraint firstItem="oL4-dI-WSi" firstAttribute="leading" secondItem="w4H-q9-Gfn" secondAttribute="leading" constant="192" id="Q9n-9n-fPm"/>
+                            <constraint firstItem="xbY-c2-6uA" firstAttribute="leading" secondItem="w4H-q9-Gfn" secondAttribute="leading" constant="151" id="WPi-YR-me9"/>
+                            <constraint firstItem="xbY-c2-6uA" firstAttribute="top" secondItem="w4H-q9-Gfn" secondAttribute="top" constant="94" id="YVN-my-ZzH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w4H-q9-Gfn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zb5-h1-ykH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cfo-Z7-qLm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047" y="139"/>
         </scene>
     </scenes>
 </document>

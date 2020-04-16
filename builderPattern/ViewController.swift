@@ -8,23 +8,40 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIScrollViewDelegate {
+class ViewController: UIViewController{
 
     @IBOutlet weak var table: UITableView!
     
     @IBOutlet weak var constraintHeightTable: NSLayoutConstraint!
     @IBOutlet weak var height: NSLayoutConstraint!
     @IBOutlet weak var viewImage: UIView!
+    var status = false
+    var url : String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         table.delegate = self
         table.dataSource = self
         table.tableFooterView = UIView()
         let avatar = AvatarBuilder(view: viewImage)
         
-        viewImage = avatar.scaleImage(url: "image1", scale: 0.6).border().cornerRadius(radius: 10).shadow(opacity: 1, color: UIColor.blue.cgColor
-        ).backgroundColorWhenIsTransparant(url: "image1", color: .purple).build()
+        viewImage = avatar.circularView().scaleImage(url: "https://logo.clearbit.com/dsw.com", scale: 1,type: .cercle).border().build()
     }
+    
+    @IBAction func btnPressed(_ sender: Any) {
+        status = !status
+        status ? (url = "https://logo.clearbit.com/trycarriage.com") : (url = "https://logo.clearbit.com/dsw.com")
+        let avatar = AvatarBuilder(view: viewImage)
+
+        viewImage = avatar.circularView().scaleImage(url: url ?? "", scale: 1,type: .cercle).border().build()
+//        let next : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let nextController = next.instantiateViewController(identifier: "nextView") as! NextControllerViewController
+//        nextController.modalPresentationStyle = .fullScreen
+//        self.show(nextController, sender: self)
+    }
+    
+   
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
@@ -43,7 +60,7 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource{
         return cell ?? UITableViewCell()
     }
     
-    
-    
-    
 }
+
+
+

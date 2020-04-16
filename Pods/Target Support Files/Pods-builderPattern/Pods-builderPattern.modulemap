@@ -1,0 +1,6 @@
+framework module Pods_builderPattern {
+  umbrella header "Pods-builderPattern-umbrella.h"
+
+  export *
+  module * { export * }
+}
